@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, except: %i[index]
   def index
     @past_events = Event.past
     @present_events = Event.present
@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @attendance = Attendance.find_by(event_id: @event.id, user_id: current_user.id)
   end
 
   def create
