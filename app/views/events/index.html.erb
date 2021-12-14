@@ -1,6 +1,19 @@
-<h1> Events </h1>
-<ul>
-<% @events.each do |event| %>
-<li> <%= event.name %> </li>
+<h1> Private Events Website </h1>
+<% if user_signed_in? %>
+<%= link_to current_user.name, current_user %>
+<%= link_to "Sign out", destroy_user_session_path %>
+<% else %>
+<%= link_to "Sign in", new_user_session_path %>
+<%= link_to "Sign up", new_user_registration_path %>
 <% end %>
-</ul>
+
+<h2> Events </h2>
+
+<% @events.each do |event| %>
+<div>
+<h2> <%= event.name %> </li>
+<p> <%= event.date %> </p>
+<!--<p> <%= event.creator %> </p> -->
+</div>
+<% end %>
+

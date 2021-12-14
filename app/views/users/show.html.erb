@@ -1,0 +1,7 @@
+<h1>Your created events</h1>
+<%= link_to "Go back", root_path %>
+
+<% @events.each do |event| %>
+<p> <%= event.name %> </p>
+<% end %>
+
