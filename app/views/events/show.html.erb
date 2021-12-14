@@ -1,4 +1,15 @@
 <h1> <%= @event.name %> </h1>
 <p> is created by <%= @event.creator.name %> </p>
 <p> See you at <%= @event.location %> on <%= @event.date %> ! </p>
+<table>
+    <tr>
+        <td> Attendees </td>
+    </tr>
+    <% @event.attendees.each do |attendee| %>
+    <tr><td> <%= attendee.name %> </td></tr>
+    <% end %>
+</table>
+<% unless @event.attendees.include?(current_user) %>
+<%= link_to "Attend!", event_attendances_path(@event), method:"post" %>
+<% end %>
 <%= link_to "Go back!", root_path %>
