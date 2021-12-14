@@ -13,12 +13,34 @@
 <% end %>
 <table>
     <tr>
+    <td colspan="4"> Present Events </td>
+    </tr>
+    <tr>
         <td> Name </td>
         <td> Date </td>
         <td> Location </td>
         <td> Creator </td>
     </tr>
-    <% @events.each do |event| %>
+    <% @present_events.each do |event| %>
+    <tr>
+        <td> <%= link_to event.name, event %> </td>
+        <td> <%= event.date %> </td>
+        <td> <%= event.location %> </td>
+        <td> <%= event.creator.name %> </td>
+    </tr>
+    <% end %>
+</table>
+<table>
+    <tr>
+    <td colspan="4"> Past Events </td>
+    </tr>
+    <tr>
+        <td> Name </td>
+        <td> Date </td>
+        <td> Location </td>
+        <td> Creator </td>
+    </tr>
+    <% @past_events.each do |event| %>
     <tr>
         <td> <%= link_to event.name, event %> </td>
         <td> <%= event.date %> </td>

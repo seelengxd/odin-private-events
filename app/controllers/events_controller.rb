@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   def index
-    @events = Event.all
+    @past_events = Event.where("date < ?", Date.today)
+    @present_events = Event.where("date >= ?", Date.today)
   end
 
   def new
