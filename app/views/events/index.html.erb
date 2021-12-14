@@ -8,12 +8,24 @@
 <% end %>
 
 <h2> Events </h2>
-
-<% @events.each do |event| %>
-<div>
-<h2> <%= event.name %> </li>
-<p> <%= event.date %> </p>
-<!--<p> <%= event.creator %> </p> -->
-</div>
+<% if user_signed_in? %>
+<%= link_to "Make new event", new_event_path %>
 <% end %>
+<table>
+    <tr>
+        <td> Name </td>
+        <td> Date </td>
+        <td> Location </td>
+        <td> Creator </td>
+    </tr>
+    <% @events.each do |event| %>
+    <tr>
+        <td> <%= event.name %> </td>
+        <td> <%= event.date %> </td>
+        <td> <%= event.location %> </td>
+        <td> <%= event.creator.name %> </td>
+    </tr>
+    <% end %>
+</table>
+
 
