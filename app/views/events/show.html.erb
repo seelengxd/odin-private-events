@@ -9,7 +9,10 @@
     <tr><td> <%= attendee.name %> </td></tr>
     <% end %>
 </table>
+<% if @event.creator == current_user %>
+<%= link_to "Delete Event!", @event, method: "delete" %>
+<% end %>
 <% unless @event.attendees.include?(current_user) %>
-<%= link_to "Attend!", event_attendances_path(@event), method:"post" %>
+<%= link_to "Attend!", event_attendances_path(@event), method: "post" %>
 <% end %>
 <%= link_to "Go back!", root_path %>
